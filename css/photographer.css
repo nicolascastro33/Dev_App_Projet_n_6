@@ -33,16 +33,16 @@
     margin: auto;
 }
 
-.modal header {
+.modal_header {
     justify-content: space-between;
     width: 100%;
 }
 
-.modal header img {
+.modal_header img {
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal_header h2 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
