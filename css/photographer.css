@@ -1,76 +1,286 @@
+main {
+  margin: auto;
+}
+
 #contact_modal {
-    display: none;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
 }
 
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 1s;
+  &:hover{
+      transform: scale(1.1);
+      transition-duration: 1s;
+  }
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+
+.modal textarea{
+    width: 100%;
 }
 
 .modal_header {
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .modal_header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal_header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 4rem;
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+}
+.modal h3 {
+  font-size: 4rem;
+  font-weight: normal;
+  margin: 0 0 20px 0;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Modification css */
+
+.photograph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 313px;
+  padding: 0 35px 0 35px;
+}
+
+.imgWrapper{
+    position: relative;
+    overflow: hidden;
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+    & img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);  
+        height: 150%;  
+    }
+}
+
+
+
+.mediaCardWrapper {
+  transition-duration: 1s;
+  &:hover{
+      transform: scale(1.05);
+      transition-duration: 1s;
+      cursor: pointer;
+  }
+  &:focus {
+    border: 1px solid black;
+  }
+}
+
+.mediaPictureWrapper {
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mediaPicture {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: 200%;
+}
+
+.mediaPictureText {
+  display: flex;
+  justify-content: space-between;
+}
+
+.numberLikes {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  & img {
+    height: 24px;
+  }
+}
+
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  margin: 30px 100px;
+  & article {
+    display: flex;
+    flex-direction: column;
+    color: #901c1c;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 728px) {
+  section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+}
+
+.errorInput {
+  background-color: #ff0000;
+}
+
+.goodInput {
+  background-color: rgb(6, 185, 6);
+}
+
+.lightbox{
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: white;
+  color: #901c1c;
+}
+
+.lightbox__content{
+  margin: 5% auto 0;
+  max-width: 1500px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.elementLightbox{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.iconsLightbox{
+  position: absolute;
+  cursor: pointer;
+  max-width: 48px;
+  transform: scale(1) translate(-50%, -50%);
+  transition: 1s;
+  &:hover{
+    transform: scale(1.1) translate(-50%, -50%);
+    transition: 1s;
+  }
+}
+
+#closeModalLightbox{
+  top: 4%;
+  right: 10%;
+  border: 1px solid black;
+}
+
+#arrowRight{
+  top: 50%;
+  right: 10%;
+}
+
+#arrowLeft{
+  top: 50%;
+  left: 10%;
+}
+
+#pictureLightbox{
+max-height: 600px;
+}
+
+/* aside likes and price */
+
+aside{
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    right: 5%;
+    min-width: 25%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #DB8876;
+    font-weight: bold;
+    font-size: 1rem;
+    & .likesWrapper{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      & img{
+        height: 24px;
+      }
+    }
 }

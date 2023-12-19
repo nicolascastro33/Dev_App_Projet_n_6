@@ -2,32 +2,34 @@ export async function displayPhotographerInfo(data) {
   const { name, portrait, city, tagline, country } = data;
   const picture = `/assets/photographers/${portrait}`;
 
-  const imagePhotographer = document.createElement('img');
-  imagePhotographer.src = picture;
-  imagePhotographer.alt = name;
-
-  const cardDom = `
+  const imgCardDom = `
+    <img src="${picture}" alt="${name}"/>
+  `;
+  const textCardDom = `
       <h1>${name}</h1>
       <h2>${city}, ${country}</h2>
       <p class="cardDomTagline">${tagline}</p>
 `;
-  const infoPhotographer = document.createElement('div')
-  infoPhotographer.className = "infoWrapper"
-  infoPhotographer.innerHTML = cardDom;
+  const infoPhotographer = document.createElement('div');
+  const imgCardDomWrapper = document.createElement('div');
+  infoPhotographer.className = 'infoWrapper';
+  imgCardDomWrapper.className = 'imgWrapper';
+  infoPhotographer.innerHTML = textCardDom;
+  imgCardDomWrapper.innerHTML = imgCardDom;
 
-  const buttonContact = document.querySelector('.contact_button');  
-  buttonContact.before(infoPhotographer)
-  buttonContact.after(imagePhotographer)
+  const buttonContact = document.querySelector('.contact_button');
+  buttonContact.before(infoPhotographer);
+  buttonContact.after(imgCardDomWrapper);
 }
 
 export async function displayPhotographerMedias(getMedias, templates) {
   const medias = await getMedias();
-  const photographHeader = document.querySelector('.photograph-header');
-  const mediasSection = document.createElement("section")
-  photographHeader.after(mediasSection)
+  const sortBy = document.querySelector('.sort-by');
+  const mediasSection = document.createElement('section');
+  sortBy.after(mediasSection);
   medias?.map((media) => {
     const photographerModel = templates(media);
     const userCardDOM = photographerModel.getMediaCardDOM();
     mediasSection.appendChild(userCardDOM);
-  })
+  });
 }

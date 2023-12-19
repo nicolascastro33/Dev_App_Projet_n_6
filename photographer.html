@@ -20,6 +20,15 @@
       <div class="photograph-header">
         <button class="contact_button" id="openModal">Contactez-moi</button>
       </div>
+      <div class="sort-by">
+        <label for="sort-by-select">Trier par</label>
+        <select name="option" id="sort-by-select">
+          <option value="">--Veuillez choisir une option--</option>
+          <option value="Popularité">Popularité</option>
+          <option value="Date">Date</option>
+          <option value="Titre">Titre</option>
+        </select>
+      </div>
     </main>
     <div id="contact_modal">
       <div class="modal">
@@ -28,18 +37,19 @@
           <img src="assets/icons/close.svg" id="closeModal" />
         </div>
 
+
         <form>
           <div>
             <label for="Prénom">Prénom</label>
-            <input type="text" name="Prénom" required />
+            <input title="Votre prénom" type="text" name="Prénom" required />
             <label for="Nom">Nom</label>
-            <input type="text" name="Nom" required />
+            <input title="Votre nom" type="text" name="Nom" required />
             <label for="email">Email</label>
-            <input type="email" name="email" required />
+            <input title="Votre email" type="email" name="email" required />
             <label for="message">Votre message</label>
-            <textarea id="message" name="message" rows="10"></textarea>
+            <input title="Votre message" type="textarea" id="message" name="message"></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <input type="submit" name="submit" class="contact_button" value="Envoyer"/>
         </form>
       </div>
     </div>
