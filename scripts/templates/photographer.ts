@@ -1,4 +1,6 @@
-export function photographerTemplate(data) {
+import { InterfacePhotographer } from "../utils/interface.ts";
+
+export function photographerTemplate(data:InterfacePhotographer) {
   const { name, portrait, price, city, tagline, country } = data;
   const path = `${window.location.origin}/photographer.html?id=${data.id}&nom=${name}`;
   const picture = `/assets/photographers/${portrait}`;

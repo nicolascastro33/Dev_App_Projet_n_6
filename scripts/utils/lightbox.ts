@@ -1,6 +1,6 @@
 export function closeLightbox() {
   const lightbox = document.querySelector('.lightbox');
-  lightbox.remove();
+  lightbox?.remove();
 }
 
 export function nextLightbox() {
@@ -11,12 +11,12 @@ export function previousLightbox() {
   console.log('previous');
 }
 
-export function displayLightbox(path, title, lightboxTemplate) {
+export function displayLightbox(path:string, title:string, lightboxTemplate:Function) {
   const lightboxWrapper = lightboxTemplate(path, title);
   const main = document.querySelector('main');
-  main.after(lightboxWrapper);
+  main?.after(lightboxWrapper);
 
   const buttonClose = document.querySelector("#closeModalLightbox")
-  buttonClose.addEventListener("click", () => closeLightbox());
+  buttonClose?.addEventListener("click", () => closeLightbox());
 
 }

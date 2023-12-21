@@ -1,4 +1,4 @@
-export function lightboxTemplate(path, title){
+export function lightboxTemplate(path:string, title:string){
     const lightboxContent = `
   <div class="lightbox__content">
     <div class="elementLightbox">

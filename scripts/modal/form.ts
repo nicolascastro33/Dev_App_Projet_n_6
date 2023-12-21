@@ -1,5 +1,5 @@
-import { eraseErrorMessage } from '../utils/error/eraseError.js';
-import { showSuccessMessage, eraseSuccessMessage } from '../utils/success/messageForm.js';
+import { eraseErrorMessage } from '../utils/error/eraseError.ts';
+import { showSuccessMessage, eraseSuccessMessage } from '../utils/success/messageForm.ts';
 
 export const allInputForm = document.querySelectorAll('form input');
 const form = document.querySelector('form');
@@ -8,8 +8,7 @@ const form = document.querySelector('form');
 export function clearForm() {
   // On efface toutes les données des inputs, leurs class css, ainsi que leurs message d'erreur
   for (let i = 0; i < allInputForm.length; i++) {
-    const input = allInputForm[i];
-    console.log(input.type)
+    let input:HTMLInputElement = allInputForm[i];
     if(input.type !== "submit"){
       input.value = '';
     }
@@ -22,7 +21,7 @@ export function clearForm() {
   }
 }
 
-export function updateForm(validateUpdateForm) {
+export function updateForm(validateUpdateForm:Function) {
   try {
     for (let i = 0; i < allInputForm.length; i++) {
       let input = allInputForm[i];
@@ -31,26 +30,25 @@ export function updateForm(validateUpdateForm) {
         validateUpdateForm(input);
       });
     }
-  } catch (error) {
+  } catch (error:any) {
     console.log('Une erreur est survenue: ' + error.message);
   }
 }
 
-export function submitForm(validateSubmitForm) {
+export function submitForm(validateSubmitForm:Function) {
   try {
-    form.addEventListener('submit', (event) => {
+    form?.addEventListener('submit', (event) => {
       event.preventDefault();
       let allInformation = {};
       for (let i = 0; i < allInputForm.length; i++) {
         let input = allInputForm[i];
-        console.log(input);
         validateSubmitForm(input, allInformation);
       }
       console.log(allInformation);
       clearForm();
       showSuccessMessage();      
     });
-  } catch (error) {
+  } catch (error:any) {
     console.log('Une erreur est survenue: ' + error.message);
   }
 }

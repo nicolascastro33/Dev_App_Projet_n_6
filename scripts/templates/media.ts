@@ -1,11 +1,12 @@
-import { getPhotographerName } from '../getData/getUrlData.js';
-import { displayLightbox } from '../utils/lightbox.js';
-import { lightboxTemplate } from './lightbox.js';
+import { getPhotographerName } from '../getData/getUrlData.ts';
+import { displayLightbox } from '../utils/lightbox.ts';
+import { lightboxTemplate } from './lightbox.ts';
+import { InterfaceMedias } from '../utils/interface.ts';
 
-export function mediasTemplate(data) {
+export function mediasTemplate(data:InterfaceMedias) {
   const { title, id, likes, image } = data;
   const fullName = getPhotographerName();
-  const firstName = fullName.split(' ')[0];
+  const firstName = fullName?.split(' ')[0];
   const path = `/assets/medias/${firstName}/${image}`;
 
   function getMediaCardDOM() {

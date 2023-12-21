@@ -1,4 +1,4 @@
-export function likesAndPriceWrapper(likes, price){
+export function likesAndPriceWrapper(likes:number, price:number){
     const contentDom = `
     <div class="likesWrapper">
         <p>${likes}</p>
@@ -9,5 +9,5 @@ export function likesAndPriceWrapper(likes, price){
     const contentCardDom = document.createElement("aside")
     contentCardDom.innerHTML = contentDom
     const main = document.querySelector("main")
-    main.appendChild(contentCardDom)
+    main?.appendChild(contentCardDom)
 }

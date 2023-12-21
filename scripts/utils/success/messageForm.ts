@@ -4,12 +4,12 @@ export function showSuccessMessage(){
       const button = document.querySelector("input[name='submit']")
       messageSucceed = document.createElement("span")
       messageSucceed.id = "messageSucceed"
-      messageSucceed.innerText = "Votre message a bien été envoyé"
-      button.after(messageSucceed) 
+      messageSucceed.textContent = "Votre message a bien été envoyé"
+      button?.after(messageSucceed) 
     }
     return messageSucceed
   }
 
-export function eraseSuccessMessage(id){
+export function eraseSuccessMessage(id:Element){
   id.remove()
 }

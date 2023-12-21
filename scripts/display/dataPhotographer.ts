@@ -1,4 +1,6 @@
-export async function displayPhotographerInfo(data) {
+import { InterfacePhotographer } from "../utils/interface.ts";
+
+export async function displayPhotographerInfo(data:InterfacePhotographer) {
   const { name, portrait, city, tagline, country } = data;
   const picture = `/assets/photographers/${portrait}`;
 
@@ -18,16 +20,16 @@ export async function displayPhotographerInfo(data) {
   imgCardDomWrapper.innerHTML = imgCardDom;
 
   const buttonContact = document.querySelector('.contact_button');
-  buttonContact.before(infoPhotographer);
-  buttonContact.after(imgCardDomWrapper);
+  buttonContact?.before(infoPhotographer);
+  buttonContact?.after(imgCardDomWrapper);
 }
 
-export async function displayPhotographerMedias(getMedias, templates) {
+export async function displayPhotographerMedias(getMedias:Function, templates:Function) {
   const medias = await getMedias();
   const sortBy = document.querySelector('.sort-by');
   const mediasSection = document.createElement('section');
-  sortBy.after(mediasSection);
-  medias?.map((media) => {
+  sortBy?.after(mediasSection);
+  medias?.map((media:object) => {
     const photographerModel = templates(media);
     const userCardDOM = photographerModel.getMediaCardDOM();
     mediasSection.appendChild(userCardDOM);
