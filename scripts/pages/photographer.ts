@@ -15,20 +15,21 @@ import {
 import { mediasTemplate } from '../templates/media.ts';
 import { submitForm, updateForm } from '../modal/form.ts';
 import { validateSubmitForm, validateUpdateForm } from '../modal/validate.ts';
-import { likesAndPriceWrapper } from '../assets/likes.ts';
-
+import { likesAndPriceWrapper } from '../templates/likes.ts';
+import { calculateNumberOfLikes } from '../assets/likes.ts';
 
 //fonctions pour obtenir et afficher les infos et les photos du photographe
 const data = await getPhotographerPageData(getPhotographerId);
 displayPhotographerInfo(data);
-displayPhotographerMedias(getPhotographerMedias, mediasTemplate);
 
-//fonctions sur la modal de contact 
+const mediaData = await getPhotographerMedias();
+displayPhotographerMedias(mediaData, mediasTemplate);
+
+//fonctions sur la modal de contact
 initModal(closeModal, displayModal, getPhotographerName);
 submitForm(validateSubmitForm);
 updateForm(validateUpdateForm);
 
 //fonctions sur l'affichage et le calcul du nombre de likes
-likesAndPriceWrapper(200, 300)
-
-
+const numberLikes = calculateNumberOfLikes(mediaData)
+likesAndPriceWrapper(numberLikes, 300);

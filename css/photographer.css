@@ -244,18 +244,17 @@ section {
 
 #closeModalLightbox{
   top: 4%;
-  right: 10%;
-  border: 1px solid black;
+  right: 5%;
 }
 
 #arrowRight{
   top: 50%;
-  right: 10%;
+  right: 5%;
 }
 
 #arrowLeft{
   top: 50%;
-  left: 10%;
+  left: 5%;
 }
 
 #pictureLightbox{

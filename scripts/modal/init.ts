@@ -9,8 +9,8 @@ export function initModal(closeModal:Function, displayModal:Function,name:Functi
     const openButton = document.querySelector('#openModal');
     const closeButton = document.querySelector('#closeModal');
 
-    openButton?.addEventListener('click', () => {displayModal});
-    closeButton?.addEventListener('click', () => {closeModal});
+    openButton?.addEventListener('click', () => displayModal());
+    closeButton?.addEventListener('click', () => closeModal());
   }
 
 export function modalForm(){

@@ -24,12 +24,11 @@ export async function displayPhotographerInfo(data:InterfacePhotographer) {
   buttonContact?.after(imgCardDomWrapper);
 }
 
-export async function displayPhotographerMedias(getMedias:Function, templates:Function) {
-  const medias = await getMedias();
+export async function displayPhotographerMedias(getMedias, templates:Function) {;
   const sortBy = document.querySelector('.sort-by');
   const mediasSection = document.createElement('section');
   sortBy?.after(mediasSection);
-  medias?.map((media:object) => {
+  getMedias?.map((media:object) => {
     const photographerModel = templates(media);
     const userCardDOM = photographerModel.getMediaCardDOM();
     mediasSection.appendChild(userCardDOM);

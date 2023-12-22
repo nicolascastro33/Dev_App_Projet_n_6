@@ -1,5 +1,5 @@
 import { getPhotographerId } from './getUrlData.ts';
-import { InterfacePhotographer } from '../utils/interface.ts';
+import { InterfacePhotographer, InterfaceMedias } from '../utils/interface.ts';
 
 export async function getPhotographers():Promise<InterfacePhotographer[]>{
     const response = await fetch('../data/photographers.json').then(
@@ -26,7 +26,7 @@ export async function getPhotographerPageData(getPhotographerId:Function) {
   return photographerData!;
 }
 
-export async function getMediasData() {
+export async function getMediasData():Promise<InterfaceMedias[]> {
   const response = await fetch('../data/photographers.json')
     .then((data) => data.json())
     .catch(() => {
@@ -35,7 +35,7 @@ export async function getMediasData() {
   return response.media;
 }
 
-export async function getPhotographerMedias() {
+export async function getPhotographerMedias():Promise<InterfaceMedias[]> {
   const medias = await getMediasData();
   const id = await getPhotographerId();
   let photographerMedias = [];
