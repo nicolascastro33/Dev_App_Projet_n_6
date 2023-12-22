@@ -34,3 +34,5 @@ export async function displayPhotographerMedias(getMedias, templates:Function) {
     mediasSection.appendChild(userCardDOM);
   });
 }
+
+// export function callbackDisplayPhotographerMedias()

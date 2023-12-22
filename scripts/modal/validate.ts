@@ -9,14 +9,13 @@ import {
 import { InterfaceForm } from '../utils/interface.ts';
 
 export function validateUpdateForm(input: HTMLInputElement) {
-  if (input.type === 'text') {
+  if (input.name === 'Nom' || input.name === "Prénom") {
     validateName(input.value, input);
-  } else if (input.type === 'email') {
+  } else if (input.name === 'email') {
     validateEmail(input.value, input);
+  } else if (input.name === 'message') {
+    validateMessage(input.value, input);
   }
-  // else if (input.type === 'message') {
-  //   validateMessage(input.value, input);
-  // }
 }
 
 //Fonction qui va vérifier nos résultats quand on submit le form
@@ -24,18 +23,15 @@ export function validateSubmitForm(
   input: HTMLInputElement,
   allInformation: InterfaceForm
 ) {
-  if (input.type === 'text') {
-    if (input.name === 'Nom') {
-      allInformation.lastName = validateName(input.value, input);
-    } else {
-      allInformation.firstName = validateName(input.value, input);
-    }
-  } else if (input.type === 'email') {
+  if (input.name === 'Nom') {
+    allInformation.lastName = validateName(input.value, input);
+  } else if (input.name === "Prénom") {
+    allInformation.firstName = validateName(input.value, input);
+  } else if (input.name === 'email') {
     allInformation.email = validateEmail(input.value, input);
+  } else if (input.name === 'message') {
+    allInformation.message = validateMessage(input.value, input);
   }
-  // else if (input.type === 'message') {
-  //   allInformation.birthDate = validateMessage(input.value, input);
-  // }
   return allInformation;
 }
 
@@ -70,5 +66,15 @@ function validateEmail(email: string, input: HTMLInputElement) {
   }
 }
 
-// function validateMessage(message, input){
-// }
+function validateMessage(message, input) {
+  if (!message || message.length < 15) {
+    let errorMessage = `Votre message est trop court`;
+    insertErrorMessage(errorMessage, input.name);
+    insertErrorInput(input);
+    throw new Error(errorMessage);
+  } else {
+    eraseErrorInput(input);
+    eraseErrorMessage(input.name);
+    return message;
+  }
+}
