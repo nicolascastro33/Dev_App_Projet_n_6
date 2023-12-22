@@ -1,4 +1,5 @@
-import { InterfacePhotographer } from "../utils/interface.ts";
+import { InterfaceMedias, InterfacePhotographer } from "../utils/interface.ts";
+import { InterfaceForm } from "../utils/interface.ts";
 
 export async function displayPhotographerInfo(data:InterfacePhotographer) {
   const { name, portrait, city, tagline, country } = data;
@@ -24,7 +25,7 @@ export async function displayPhotographerInfo(data:InterfacePhotographer) {
   buttonContact?.after(imgCardDomWrapper);
 }
 
-export async function displayPhotographerMedias(getMedias, templates:Function) {;
+export async function displayPhotographerMedias(getMedias:Array<InterfaceMedias>, templates:Function) {;
   const sortBy = document.querySelector('.sort-by');
   const mediasSection = document.createElement('section');
   sortBy?.after(mediasSection);

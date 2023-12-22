@@ -41,7 +41,8 @@ displayDataSortBy(
   mediaData,
   displayPhotographerMedias,
   mediasTemplate,
-  eraseDisplayMedia
+  eraseDisplayMedia,
+  lightbox
 );
 
 //fonctions sur l'affichage et le calcul du nombre de likes

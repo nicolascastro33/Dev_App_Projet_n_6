@@ -1,8 +1,8 @@
-function videoOrImageContent(path:string, title:string): string {
-  const isVideoOrImage = path.includes('mp4') ? true : false;
-  let videoOrImageContent:string;
+function videoOrImageContent(path: string, title: string): string {
+  const isVideo = path.includes('mp4');
+  let videoOrImageContent: string;
 
-  if (isVideoOrImage) {
+  if (isVideo) {
     videoOrImageContent = `
       <video id="pictureLightbox" alt=${title}" controls autoplay>
         <source src="${path}" type="video/mp4">

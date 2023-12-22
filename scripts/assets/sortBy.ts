@@ -4,20 +4,26 @@ export function displayDataSortBy(
   data: Array<InterfaceMedias>,
   displayData: Function,
   mediasTemplate: Function,
-  eraseDisplayMedia: Function
+  eraseDisplayMedia: Function,
+  lightbox:Function
 ) {
   const select = document.querySelector('select');
+  const [...originData] = data 
   let newData;
   select?.addEventListener('change', () => {
     if (select.value === 'Popularité') {
       newData = byPopularity(data);
     } else if (select.value === 'Date') {
       newData = byDate(data);
+      console.log(newData)
     } else if (select.value === 'Titre') {
       newData = byTitle(data);
-    } else if (select.value === '') newData = data;
+    } else if (select.value === null || select.value === undefined || select.value === "") {
+      newData = originData
+    }
     eraseDisplayMedia();
     displayData(newData, mediasTemplate);
+    lightbox()
   });
 }
 

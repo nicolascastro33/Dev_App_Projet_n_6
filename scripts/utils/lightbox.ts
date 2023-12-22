@@ -1,8 +1,9 @@
-import { lightboxTemplate } from "../templates/lightbox";
-//finaliser la partie des settings des arrows 
+import { lightboxTemplate } from '../templates/lightbox';
+//finaliser la partie des settings des arrows
 // affichage de la lightbox
 function displayLightbox(img, text) {
-  const lightboxWrapper = lightboxTemplate(img.src, text.textContent);
+  const path = !img.src ? img.firstElementChild.src : img.src
+  const lightboxWrapper = lightboxTemplate(path, text.textContent);
   const main = document.querySelector('main');
   main?.after(lightboxWrapper);
 }
@@ -10,37 +11,41 @@ function displayLightbox(img, text) {
 function closeLightbox() {
   const buttonClose = document.querySelector('#closeModalLightbox');
   buttonClose?.addEventListener('click', () => {
-    const lightbox = document.querySelector('.lightbox');
-    lightbox?.remove();
+    deleteLightbox()
   });
+}
+
+function deleteLightbox(){
+  const lightbox = document.querySelector('.lightbox');
+    lightbox?.remove();
 }
 // utilisation du flèches de la lightbox
 function nextLightbox(el) {
-  const arrow = document.querySelector('.arrowRight');
-  arrow?.addEventListener('click', (e) => {
-    launchLightbox(el)
+  const arrow = document.querySelector('#arrowRight');
+  arrow?.addEventListener('click', () => {
+    console.log('hello');
+    launchLightbox(el);
   });
 }
 
 function previousLightbox(el) {
-  console.log('previous');
+  const arrow = document.querySelector('#arrowLeft');
+  arrow?.addEventListener('click', () => {
+    launchLightbox(el);
+  });
 }
-
-
 
 export function lightbox() {
   const cardDom = document.querySelectorAll('.mediaCardWrapper');
   for (let i = 0; i < cardDom.length; i++) {
     cardDom[i].addEventListener('click', () => {
-      launchLightbox(cardDom[i])
+      launchLightbox(cardDom[i]);
     });
   }
 }
 
-function arrowSettings(el){
-  const { nextElement, previousElement } = getPreviousAndNextSibling(
-    el
-  );
+function arrowSettings(el) {
+  const { nextElement, previousElement } = getPreviousAndNextSibling(el);
   const { firstChild, lastChild } = getFirstAndLastElement();
   if (!nextElement) {
     nextLightbox(firstChild);
@@ -54,14 +59,13 @@ function arrowSettings(el){
   }
 }
 
-function launchLightbox(el){
+function launchLightbox(el) {
   const { img, text } = getImgAndText(el);
-  displayLightbox(img, text)
-  closeLightbox()
-  arrowSettings(el)
-
+  deleteLightbox()
+  displayLightbox(img, text);
+  closeLightbox();
+  arrowSettings(el);
 }
-
 
 // get information
 function getPreviousAndNextSibling(el) {
@@ -82,5 +86,3 @@ function getFirstAndLastElement() {
   const lastChild = parentElement?.lastChild;
   return { firstChild, lastChild };
 }
-
-
