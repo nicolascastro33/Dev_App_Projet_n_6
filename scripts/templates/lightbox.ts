@@ -1,6 +1,6 @@
-function videoOrImageContent(path, title): string {
+function videoOrImageContent(path:string, title:string): string {
   const isVideoOrImage = path.includes('mp4') ? true : false;
-  let videoOrImageContent;
+  let videoOrImageContent:string;
 
   if (isVideoOrImage) {
     videoOrImageContent = `
