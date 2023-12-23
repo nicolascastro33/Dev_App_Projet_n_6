@@ -17,7 +17,8 @@ export interface InterfaceMedias{
     likes: number;
     date: string;
     price: number;
-    video:string
+    video:string;
+    favorite: boolean | null
 }
 
 export interface InterfaceForm{

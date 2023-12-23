@@ -1,5 +1,4 @@
 import { lightboxTemplate } from '../templates/lightbox';
-//finaliser la partie des settings des arrows
 // affichage de la lightbox
 function displayLightbox(img, text) {
   const path = !img.src ? img.firstElementChild.src : img.src

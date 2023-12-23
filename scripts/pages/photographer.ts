@@ -20,6 +20,7 @@ import { calculateNumberOfLikes } from '../assets/likes.ts';
 import { displayDataSortBy } from '../assets/sortBy.ts';
 import { eraseDisplayMedia } from '../utils/erase/eraseDisplay.ts';
 import { lightbox} from '../utils/lightbox.ts';
+import { changeLikes } from '../assets/likes.ts';
 
 //fonctions pour obtenir et afficher les infos du photographe
 const data = await getPhotographerPageData(getPhotographerId);
@@ -45,6 +46,9 @@ displayDataSortBy(
   lightbox
 );
 
+//Likes
 //fonctions sur l'affichage et le calcul du nombre de likes
 const numberLikes = calculateNumberOfLikes(mediaData);
 likesAndPriceWrapper(numberLikes, 300);
+//Modifications des likes
+changeLikes()

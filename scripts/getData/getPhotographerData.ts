@@ -1,6 +1,11 @@
 import { getPhotographerId } from './getUrlData.ts';
 import { InterfacePhotographer, InterfaceMedias } from '../utils/interface.ts';
 
+
+interface AllData {
+  photographers : Array<InterfacePhotographer>|undefined,
+  media: Array<InterfaceMedias>|undefined
+}
 export async function getPhotographers():Promise<InterfacePhotographer[]>{
     const response = await fetch('../data/photographers.json').then(
       (photographers) =>
@@ -27,12 +32,24 @@ export async function getPhotographerPageData(getPhotographerId:Function) {
 }
 
 export async function getMediasData():Promise<InterfaceMedias[]> {
-  const response = await fetch('../data/photographers.json')
+  let mediaDatas = window.localStorage.getItem('mediasData');
+  if (!mediaDatas || mediaDatas === null) {
+    mediaDatas = await fetch('../data/photographers.json')
     .then((data) => data.json())
     .catch(() => {
       console.log('Erreur lors de la récupération des médias');
     });
-  return response.media;
+    const media:Array<InterfaceMedias> = mediaDatas?.media
+    media.forEach(element => {
+      element.favorite = false
+    });
+    console.log(media)
+    const mediaDatasLocal = JSON.stringify(media)
+    window.localStorage.setItem("mediasData", mediaDatasLocal)
+  }else{
+    mediaDatas=JSON.parse(mediaDatas);
+  }
+  return mediaDatas;
 }
 
 export async function getPhotographerMedias():Promise<InterfaceMedias[]> {
@@ -45,4 +62,8 @@ export async function getPhotographerMedias():Promise<InterfaceMedias[]> {
     }
   }
   return photographerMedias;
+}
+
+export async function setLikesMedia(data){
+
 }
