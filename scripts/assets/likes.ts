@@ -1,5 +1,3 @@
-import { getPhotographerMedias } from '../getData/getPhotographerData.ts';
-
 export function calculateNumberOfLikes(mediaData): number {
   let numberLikes = 0;
   for (let i = 0; i < mediaData.length; i++) {
@@ -9,49 +7,50 @@ export function calculateNumberOfLikes(mediaData): number {
 }
 
 export function changeLikes() {
-  const allFavoritesButtons = document.querySelectorAll('.favorite');
+  const allFavoritesButtons = document.querySelectorAll('.noLike');
   for (let i = 0; i < allFavoritesButtons.length; i++) {
-    allFavoritesButtons[i].addEventListener('click', async (event) => {
-      const { numberOfLikes, data } = await getNewData(event);
-      console.log(data)
-      changeValueOneMediaLikes(numberOfLikes, allFavoritesButtons[i] )
+    allFavoritesButtons[i].addEventListener('click', async () => {
+      const likeItOrNot = await getNewData(allFavoritesButtons[i]);
+      changeValueOneMediaLikes(allFavoritesButtons[i], likeItOrNot )
+      changeValueAllMediaLikes(likeItOrNot)
     });
   }
 }
 
-function changeValueAllMediaLikes(newValue: number) {
+function changeValueAllMediaLikes(likeItOrNot: boolean) {
   const likesValue = document.querySelector('.likesWrapper p');
   if (likesValue !== null) {
+    let value:number = Number(likesValue.innerHTML)
+    let newValue
+    if(likeItOrNot){
+      newValue = value+1
+    }else{
+      newValue = value-1
+    }
     likesValue.innerHTML = newValue.toString();
   }
 }
 
-function changeValueOneMediaLikes(numberOfLikes: number, likeButton:Element) {
+function changeValueOneMediaLikes(likeButton:Element, likeItOrNot:boolean) {
   const numberOfLikesText = likeButton.closest(".numberLikes")?.firstElementChild
-  const likes = String(numberOfLikes)
+  let value:number = Number(numberOfLikesText?.innerHTML)
+  
+  const nameButton = likeItOrNot? "like" : "noLike"
+  const newValue = likeItOrNot ? value+1 : value-1
   if(numberOfLikesText != undefined){
-    numberOfLikesText.innerHTML = likes
+    likeButton.setAttribute("alt", nameButton)
+    numberOfLikesText.innerHTML = newValue.toString()
   }
 }
 
-async function getNewData(event) {
-  let numberOfLikes;
-  const id = event.target.closest('article').id;
-  const [...data] = await getPhotographerMedias();
-  const mediaId = data.find((element) => element.id == id);
-
-  mediaId!.favorite = !mediaId!.favorite;
-  numberOfLikes = mediaId?.likes;
-
-  if (numberOfLikes) {
-    if (mediaId!.favorite) {
-      numberOfLikes++;
-    } else {
-      numberOfLikes--;
-    }
+async function getNewData(button) {
+  let likeItOrNot = button.getAttribute("alt")
+  if(likeItOrNot === "noLike"){
+    button.setAttribute("alt", "like")
+    likeItOrNot = true
+  }else{
+    button.setAttribute("alt", "noLike")
+    likeItOrNot = false
   }
-  mediaId!.likes = numberOfLikes!;
-  data[data.indexOf(mediaId!)] = mediaId
-
-  return { numberOfLikes, data };
+  return likeItOrNot;
 }

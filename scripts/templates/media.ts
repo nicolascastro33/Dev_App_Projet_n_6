@@ -38,7 +38,7 @@ export function mediasTemplate(data:InterfaceMedias) {
                 <h2 id="text-${id}">${title}</h2>
                 <div class="numberLikes">
                     <p>${likes}</p>
-                    <img class="favorite" alt="likes" src="/assets/icons/favorite.png"/>
+                    <img class="noLike" alt="noLike" src="/assets/icons/favorite.png"/>
                 </div>
               </div>   
         `;

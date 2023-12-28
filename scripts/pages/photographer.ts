@@ -17,7 +17,7 @@ import { submitForm, updateForm } from '../modal/form.ts';
 import { validateSubmitForm, validateUpdateForm } from '../modal/validate.ts';
 import { likesAndPriceWrapper } from '../templates/likes.ts';
 import { calculateNumberOfLikes } from '../assets/likes.ts';
-import { displayDataSortBy } from '../assets/sortBy.ts';
+import { displayDataSortBy, setTogglesortByButton } from '../assets/sortBy.ts';
 import { eraseDisplayMedia } from '../utils/erase/eraseDisplay.ts';
 import { lightbox} from '../utils/lightbox.ts';
 import { changeLikes } from '../assets/likes.ts';
@@ -38,17 +38,20 @@ submitForm(validateSubmitForm);
 updateForm(validateUpdateForm);
 
 //fonctions sur le sortBy
+setTogglesortByButton()
 displayDataSortBy(
   mediaData,
   displayPhotographerMedias,
   mediasTemplate,
   eraseDisplayMedia,
-  lightbox
-);
+  lightbox,
+  changeLikes
+)
 
 //Likes
 //fonctions sur l'affichage et le calcul du nombre de likes
 const numberLikes = calculateNumberOfLikes(mediaData);
-likesAndPriceWrapper(numberLikes, 300);
+const {price} = data
+likesAndPriceWrapper(numberLikes, price);
 //Modifications des likes
 changeLikes()

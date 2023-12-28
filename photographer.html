@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -20,15 +20,23 @@
       <div class="photograph-header">
         <button class="contact_button" id="openModal">Contactez-moi</button>
       </div>
-      <div class="sort-by">
-        <label for="sort-by-select">Trier par</label>
-        <select name="option" id="sort-by-select">
-          <option value="">--Veuillez choisir une option--</option>
-          <option value="Popularité">Popularité</option>
-          <option value="Date">Date</option>
-          <option value="Titre">Titre</option>
-        </select>
+      <div class="all-select-menu">
+      <label for="sort-by-select">Trier par</label>
+      <div class="select-menu">
+        <div class="select-btn">
+          <span class="btn-text">Popularité</span>
+          <img src="assets/icons/dropdown.png" alt="dropdown">
+        </div>
+        <ul class="options">
+          <li class="option">
+            <span class="option-text">Date</span>
+          </li>
+          <li class="option">
+            <span class="option-text">Titre</span>
+          </li>
+        </ul>
       </div>
+    </div>
     </main>
     <div id="contact_modal">
       <div class="modal">

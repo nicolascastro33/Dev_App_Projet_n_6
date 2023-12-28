@@ -22,7 +22,6 @@ function deleteLightbox(){
 function nextLightbox(el) {
   const arrow = document.querySelector('#arrowRight');
   arrow?.addEventListener('click', () => {
-    console.log('hello');
     launchLightbox(el);
   });
 }
@@ -37,7 +36,8 @@ function previousLightbox(el) {
 export function lightbox() {
   const cardDom = document.querySelectorAll('.mediaCardWrapper');
   for (let i = 0; i < cardDom.length; i++) {
-    cardDom[i].addEventListener('click', () => {
+    const cardPictureDom = cardDom[i].firstElementChild
+    cardPictureDom!.addEventListener('click', () => {
       launchLightbox(cardDom[i]);
     });
   }
