@@ -21,7 +21,6 @@ export function photographerTemplate(data:InterfacePhotographer) {
     
     const cardDom = document.createElement('a');
     cardDom.href = path;
-    // cardDom.name = `Lien vers la page de ${name}`;
     cardDom.innerHTML = contentCardDom;
     return cardDom;
   }

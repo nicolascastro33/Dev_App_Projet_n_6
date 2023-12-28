@@ -37,11 +37,13 @@ function changeOneMediaLikes(likeButton:Element, likeItOrNot:boolean) {
 
   const nameButton = likeItOrNot? "like" : "noLike"
   const oldNameButton = nameButton === "like" ? "noLike" : "like"
+  const newAriaAttribute = likeItOrNot? "Appuyer pour ne plus aimer la photo" : "Appuyer pour aimer la photo"
   const newValue = likeItOrNot ? value+1 : value-1
   console.log(oldNameButton)
   if(numberOfLikesText != undefined){
     likeButton.classList.replace(oldNameButton, nameButton)
     likeButton.setAttribute("alt", nameButton)
+    likeButton.setAttribute("aria-label", newAriaAttribute)
     numberOfLikesText.innerHTML = newValue.toString()
   }
 }

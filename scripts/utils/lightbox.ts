@@ -1,49 +1,32 @@
-import { lightboxTemplate } from '../templates/lightbox';
-// affichage de la lightbox
-function displayLightbox(img, text) {
-  const path = !img.src ? img.firstElementChild.src : img.src
-  const lightboxWrapper = lightboxTemplate(path, text.textContent);
-  const main = document.querySelector('main');
-  main?.after(lightboxWrapper);
-}
+import { launchLightbox } from "../display/lightbox";
 
-function closeLightbox() {
+export function closeLightbox() {
   const buttonClose = document.querySelector('#closeModalLightbox');
   buttonClose?.addEventListener('click', () => {
     deleteLightbox()
   });
 }
 
-function deleteLightbox(){
+export function deleteLightbox(){
   const lightbox = document.querySelector('.lightbox');
     lightbox?.remove();
 }
 // utilisation du flèches de la lightbox
-function nextLightbox(el) {
+export function nextLightbox(el) {
   const arrow = document.querySelector('#arrowRight');
   arrow?.addEventListener('click', () => {
     launchLightbox(el);
   });
 }
 
-function previousLightbox(el) {
+export function previousLightbox(el, ) {
   const arrow = document.querySelector('#arrowLeft');
   arrow?.addEventListener('click', () => {
     launchLightbox(el);
   });
 }
 
-export function lightbox() {
-  const cardDom = document.querySelectorAll('.mediaCardWrapper');
-  for (let i = 0; i < cardDom.length; i++) {
-    const cardPictureDom = cardDom[i].firstElementChild
-    cardPictureDom!.addEventListener('click', () => {
-      launchLightbox(cardDom[i]);
-    });
-  }
-}
-
-function arrowSettings(el) {
+export function arrowSettings(el) {
   const { nextElement, previousElement } = getPreviousAndNextSibling(el);
   const { firstChild, lastChild } = getFirstAndLastElement();
   if (!nextElement) {
@@ -58,13 +41,6 @@ function arrowSettings(el) {
   }
 }
 
-function launchLightbox(el) {
-  const { img, text } = getImgAndText(el);
-  deleteLightbox()
-  displayLightbox(img, text);
-  closeLightbox();
-  arrowSettings(el);
-}
 
 // get information
 function getPreviousAndNextSibling(el) {
@@ -73,7 +49,7 @@ function getPreviousAndNextSibling(el) {
   return { nextElement, previousElement };
 }
 
-function getImgAndText(el) {
+export function getImgAndText(el) {
   const img = document.getElementById(`media-${el.id}`);
   const text = document.getElementById(`text-${el.id}`);
   return { img, text };

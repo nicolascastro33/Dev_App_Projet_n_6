@@ -1,7 +1,10 @@
 // Permet de modifier le css d'erreur pour mettre l'input en rouge
-export function insertErrorInput(input:HTMLInputElement) {
+export function insertErrorInput(input:HTMLInputElement, id:string) {
   input.classList.remove('goodInput');
   input.classList.add('errorInput');
+
+  input.setAttribute("aria-invalid", "true")
+  input.setAttribute("aria-erromessage", `errorMessage${id}`)
 }
 
 // Permet d'introduire un message d'erreur en identifiant

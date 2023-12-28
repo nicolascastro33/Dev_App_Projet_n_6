@@ -43,7 +43,7 @@ function validateName(name: string, input: HTMLInputElement) {
   if (!regexName.test(name)) {
     let message = `Le champ ${input.name} est invalide`;
     insertErrorMessage(message, input.name);
-    insertErrorInput(input);
+    insertErrorInput(input, input.name);
     throw new Error(message);
   } else {
     eraseErrorInput(input);
@@ -57,7 +57,7 @@ function validateEmail(email: string, input: HTMLInputElement) {
   if (!regexEmail.test(email)) {
     let message = `Le champ d'email est invalide`;
     insertErrorMessage(message, input.name);
-    insertErrorInput(input);
+    insertErrorInput(input, input.name);
     throw new Error(message);
   } else {
     eraseErrorInput(input);
@@ -70,7 +70,7 @@ function validateMessage(message, input) {
   if (!message || message.length < 15) {
     let errorMessage = `Votre message est trop court`;
     insertErrorMessage(errorMessage, input.name);
-    insertErrorInput(input);
+    insertErrorInput(input, input.name);
     throw new Error(errorMessage);
   } else {
     eraseErrorInput(input);

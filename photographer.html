@@ -12,22 +12,21 @@
   </head>
   <body>
     <header>
-      <a href="/" alt="“Fisheye Home page"
-        ><img src="assets/images/logo.png" class="logo" alt="fisheye logo"
-      /></a>
+      <a href="/" aria-label="Lien vers la page d'accueil" alt="Fisheye Home page" aria-current="page"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"/></a>
+
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" id="openModal">Contactez-moi</button>
+        <button type="button" aria-haspopup="true" class="contact_button" id="openModal">Contactez-moi</button>
       </div>
       <div class="all-select-menu">
       <label for="sort-by-select">Trier par</label>
-      <div class="select-menu">
-        <div class="select-btn">
-          <span class="btn-text">Date</span>
-          <img src="assets/icons/dropdown.png" alt="dropdown">
+      <div id="toggleNavbar" class="select-menu">
+        <div aria-expanded="false" aria-controls="toggleNavbar" aria-label="bouton pour ouvrir les options de trie" class="select-btn">
+          <span aria-current="page"  class="btn-text">Date</span>
+          <img src="assets/icons/dropdown.png" alt="dropdown" aria-hidden="true">
         </div>
-        <ul class="options">
+        <ul class="options" aria-hidden="true">
           <li class="option">
             <span class="option-text">Popularité</span>
           </li>
@@ -42,20 +41,20 @@
       <div class="modal">
         <div class="modal_header">
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="closeModal" />
+          <img role="button" src="/assets/icons/close.svg" id="closeModal" alt="Fermer la modal" />
         </div>
 
 
-        <form>
-          <div>
-            <label for="Prénom">Prénom</label>
-            <input title="Votre prénom" type="text" name="Prénom" required />
-            <label for="Nom">Nom</label>
-            <input title="Votre nom" type="text" name="Nom" required />
+        <form role="form" aria-hidden="true">
+          <div role="group" aria-label="Veuillez informez vos coordonnées, ainsi que votre message à la photographe">
+            <label for="prenom">Prénom</label>
+            <input title="Votre prénom" placeholder="Votre prénom" type="text" id="prenom" name="Prénom" aria-required=true required />
+            <label for="nom">Nom</label>
+            <input title="Votre nom"  placeholder="Votre nom" type="text" id="nom" name="Nom" aria-required=true required />
             <label for="email">Email</label>
-            <input title="Votre email" type="email" name="email" required />
+            <input title="Votre email" placeholder="Votre email"  type="email" id="email" name="email" aria-required=true required />
             <label for="message">Votre message</label>
-            <input title="Votre message" type="textarea" id="message" name="message"></textarea>
+            <input title="Votre message" placeholder="Votre message" type="textarea" id="message" name="message" aria-required=true required></textarea>
           </div>
           <input type="submit" name="submit" class="contact_button" value="Envoyer"/>
         </form>

@@ -2,14 +2,16 @@ import { InterfaceMedias } from '../utils/interface';
 
 const optionMenu = document.querySelector('.select-menu'),
   selectBtn = optionMenu?.querySelector('.select-btn'),
+  allOption = optionMenu?.querySelector(".options"),
   options = optionMenu?.querySelectorAll('.option'),
   btn_text = optionMenu?.querySelector('.btn-text');
 
-
 export function setTogglesortByButton() {
-  selectBtn?.addEventListener('click', () =>
-    optionMenu?.classList.toggle('active')
-  );
+  selectBtn?.addEventListener('click', () => {
+    optionMenu?.classList.toggle('active');
+    allOption?.setAttribute('aria-hidden', 'false');
+    selectBtn?.setAttribute("aria-expended", "true" )
+  });
 }
 
 export function displayDataSortBy(
@@ -22,7 +24,7 @@ export function displayDataSortBy(
 ) {
   options!.forEach((option) => {
     option.addEventListener('click', () => {
-      setTextSelect(option)
+      setTextSelect(option);
       const newData = getDataSortBy(data);
       eraseDisplayMedia();
       displayData(newData, mediasTemplate);
@@ -70,15 +72,14 @@ function byTitle(data: Array<InterfaceMedias>): Array<InterfaceMedias> {
   return newData;
 }
 
-
 function setTextSelect(option) {
   let selectedOption = option.querySelector('.option-text')?.innerHTML;
-  let actualOption = btn_text?.innerHTML
+  let actualOption = btn_text?.innerHTML;
 
   btn_text!.innerHTML = selectedOption;
-  option.querySelector('.option-text').innerHTML = actualOption
-
+  option.querySelector('.option-text').innerHTML = actualOption;
 
   optionMenu?.classList.remove('active');
+  allOption?.setAttribute('aria-hidden', 'true');
+  selectBtn?.setAttribute("aria-expended", "false" )
 }
-

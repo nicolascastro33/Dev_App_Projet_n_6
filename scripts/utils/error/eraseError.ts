@@ -1,6 +1,7 @@
 export function eraseErrorInput(input:HTMLInputElement) {
     input.classList.remove('errorInput');
     input.classList.add('goodInput');
+    input.setAttribute("aria-invalid", "false")
   }
   
   // Permet de supprimer le message d'erreur 

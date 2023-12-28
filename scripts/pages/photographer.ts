@@ -19,7 +19,7 @@ import { likesAndPriceWrapper } from '../templates/likes.ts';
 import { calculateNumberOfLikes } from '../assets/likes.ts';
 import { displayDataSortBy, setTogglesortByButton } from '../assets/sortBy.ts';
 import { eraseDisplayMedia } from '../utils/erase/eraseDisplay.ts';
-import { lightbox} from '../utils/lightbox.ts';
+import { lightbox} from '../display/lightbox.ts';
 import { changeLikes } from '../assets/likes.ts';
 
 //fonctions pour obtenir et afficher les infos du photographe
