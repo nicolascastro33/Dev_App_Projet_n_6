@@ -11,7 +11,7 @@ export function changeLikes() {
   for (let i = 0; i < allFavoritesButtons.length; i++) {
     allFavoritesButtons[i].addEventListener('click', async () => {
       const likeItOrNot = await getNewData(allFavoritesButtons[i]);
-      changeValueOneMediaLikes(allFavoritesButtons[i], likeItOrNot )
+      changeOneMediaLikes(allFavoritesButtons[i], likeItOrNot )
       changeValueAllMediaLikes(likeItOrNot)
     });
   }
@@ -31,13 +31,16 @@ function changeValueAllMediaLikes(likeItOrNot: boolean) {
   }
 }
 
-function changeValueOneMediaLikes(likeButton:Element, likeItOrNot:boolean) {
+function changeOneMediaLikes(likeButton:Element, likeItOrNot:boolean) {
   const numberOfLikesText = likeButton.closest(".numberLikes")?.firstElementChild
   let value:number = Number(numberOfLikesText?.innerHTML)
-  
+
   const nameButton = likeItOrNot? "like" : "noLike"
+  const oldNameButton = nameButton === "like" ? "noLike" : "like"
   const newValue = likeItOrNot ? value+1 : value-1
+  console.log(oldNameButton)
   if(numberOfLikesText != undefined){
+    likeButton.classList.replace(oldNameButton, nameButton)
     likeButton.setAttribute("alt", nameButton)
     numberOfLikesText.innerHTML = newValue.toString()
   }

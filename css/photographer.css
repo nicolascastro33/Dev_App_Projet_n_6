@@ -231,8 +231,9 @@ section{
   height: 350px;
   overflow: hidden;
   position: relative;
+  transition-duration: 1s;
   &:hover {
-    transform: scale(1.01);
+    transform: scale(1.05);
     transition-duration: 1s;
     cursor: pointer;
   }
@@ -256,25 +257,26 @@ section{
   display: flex;
   align-items: center;
   margin-right: 5px;
-  &img {
+  & img {
     height: 24px;
+    margin-left: 5px;
     &:hover {
       cursor: pointer;
+      transform: scale(1.2);
+      transition: all 1s;
+
     }
   }
 }
-sdfsdf .anim-like {
-  animation-name: anim-like;
-  animation-duration: 0.8s;
-  animation-timing-function: steps(28);
+
+.like{
+  transition: all 1s;
+  transform: scale(1.2);
 }
-@keyframes anim-like {
-  from {
-    background-position: left;
-  }
-  to {
-    background-position: right;
-  }
+.noLike{
+  transition: all 1s;
+  filter: grayscale(100%) opacity(0.6);
+
 }
 
 section {
