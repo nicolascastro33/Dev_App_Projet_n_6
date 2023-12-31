@@ -19,7 +19,7 @@ import { likesAndPriceWrapper } from '../templates/likes.ts';
 import { calculateNumberOfLikes } from '../assets/likes.ts';
 import { displayDataSortBy, setTogglesortByButton } from '../assets/sortBy.ts';
 import { eraseDisplayMedia } from '../utils/erase/eraseDisplay.ts';
-import { lightbox} from '../display/lightbox.ts';
+import { lightbox } from '../display/lightbox.ts';
 import { changeLikes } from '../assets/likes.ts';
 
 //fonctions pour obtenir et afficher les infos du photographe
@@ -38,7 +38,7 @@ submitForm(validateSubmitForm);
 updateForm(validateUpdateForm);
 
 //fonctions sur le sortBy
-setTogglesortByButton()
+setTogglesortByButton();
 displayDataSortBy(
   mediaData,
   displayPhotographerMedias,
@@ -46,12 +46,11 @@ displayDataSortBy(
   eraseDisplayMedia,
   lightbox,
   changeLikes
-)
-
+);
 //Likes
 //fonctions sur l'affichage et le calcul du nombre de likes
 const numberLikes = calculateNumberOfLikes(mediaData);
-const {price} = data
+const { price } = data;
 likesAndPriceWrapper(numberLikes, price);
 //Modifications des likes
-changeLikes()
+changeLikes();

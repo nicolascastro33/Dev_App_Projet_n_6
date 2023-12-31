@@ -11,7 +11,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
+    <header aria-hidden="false">
       <a href="/" aria-label="Lien vers la page d'accueil" alt="Fisheye Home page" aria-current="page"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"/></a>
 
     </header>
@@ -22,16 +22,20 @@
       <div class="all-select-menu">
       <label for="sort-by-select">Trier par</label>
       <div id="toggleNavbar" class="select-menu">
-        <div aria-expanded="false" aria-controls="toggleNavbar" aria-label="bouton pour ouvrir les options de trie" class="select-btn">
-          <span aria-current="page"  class="btn-text">Date</span>
+        <button type="button" aria-expanded="false" aria-controls="toggleNavbar" aria-label="bouton pour ouvrir les options de trie" class="select-btn">
+          <span aria-current="page" class="btn-text">Date</span>
           <img src="assets/icons/dropdown.png" alt="dropdown" aria-hidden="true">
-        </div>
+        </button>
         <ul class="options" aria-hidden="true">
           <li class="option">
-            <span class="option-text">Popularité</span>
+            <button tabindex="-1" type="button" >
+             <span class="option-text">Popularité</span> 
+            </button>
           </li>
           <li class="option">
-            <span class="option-text">Titre</span>
+            <button tabindex="-1" type="button">
+               <span class="option-text">Titre</span>
+            </button>
           </li>
         </ul>
       </div>
@@ -41,7 +45,10 @@
       <div class="modal">
         <div class="modal_header">
           <h2>Contactez-moi</h2>
-          <img role="button" src="/assets/icons/close.svg" id="closeModal" alt="Fermer la modal" />
+          <button type="button" role="button" id="closeModal" aria-describedby="img">
+            <img    src="/assets/icons/close.svg"  alt="Fermer la modal" />
+          </button>
+          
         </div>
 
 

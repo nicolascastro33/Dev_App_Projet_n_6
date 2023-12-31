@@ -2,15 +2,24 @@ import { InterfaceMedias } from '../utils/interface';
 
 const optionMenu = document.querySelector('.select-menu'),
   selectBtn = optionMenu?.querySelector('.select-btn'),
-  allOption = optionMenu?.querySelector(".options"),
-  options = optionMenu?.querySelectorAll('.option'),
+  allOption = optionMenu?.querySelector('.options'),
+  options = optionMenu?.querySelectorAll('.option button'),
   btn_text = optionMenu?.querySelector('.btn-text');
 
 export function setTogglesortByButton() {
   selectBtn?.addEventListener('click', () => {
     optionMenu?.classList.toggle('active');
     allOption?.setAttribute('aria-hidden', 'false');
-    selectBtn?.setAttribute("aria-expended", "true" )
+    selectBtn?.setAttribute('aria-expended', 'true');
+    if (optionMenu?.getAttribute("class")?.includes("active")) {
+      options?.forEach((option) => {
+        option.setAttribute('tabindex', '0');
+      });
+    } else {
+      options?.forEach((option) => {
+        option.setAttribute('tabindex', '-1');
+      });
+    }
   });
 }
 
@@ -81,5 +90,8 @@ function setTextSelect(option) {
 
   optionMenu?.classList.remove('active');
   allOption?.setAttribute('aria-hidden', 'true');
-  selectBtn?.setAttribute("aria-expended", "false" )
+  selectBtn?.setAttribute('aria-expended', 'false');
+  options?.forEach((option) => {
+    option.setAttribute('tabindex', '-1');
+  });
 }

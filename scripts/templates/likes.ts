@@ -7,6 +7,7 @@ export function likesAndPriceWrapper(likes:number, price:number){
     <p aria-label="Prix du photographe par jour">${price}€ / jour</p>
     `
     const contentCardDom = document.createElement("aside")
+    contentCardDom.setAttribute("tabindex", "0")
     contentCardDom.innerHTML = contentDom
     const main = document.querySelector("main")
     main?.appendChild(contentCardDom)

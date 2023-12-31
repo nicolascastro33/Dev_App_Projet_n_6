@@ -16,6 +16,7 @@ export async function displayPhotographerInfo(data:InterfacePhotographer) {
   const imgCardDomWrapper = document.createElement('div');
   infoPhotographer.className = 'infoWrapper';
   imgCardDomWrapper.className = 'imgWrapper';
+  infoPhotographer.setAttribute("tabindex", "0")
   infoPhotographer.innerHTML = textCardDom;
   imgCardDomWrapper.innerHTML = imgCardDom;
 

@@ -1,16 +1,27 @@
-import { launchLightbox } from "../display/lightbox";
+import { launchLightbox } from '../display/lightbox';
+import { restartScrolling } from './scroll';
 
 export function closeLightbox() {
   const buttonClose = document.querySelector('#closeModalLightbox');
   buttonClose?.addEventListener('click', () => {
-    deleteLightbox()
+    deleteLightbox();
   });
 }
 
-export function deleteLightbox(){
+export function deleteLightbox() {
+  const main = document.querySelector('main');
+  const header = document.querySelector("header")
   const lightbox = document.querySelector('.lightbox');
-    lightbox?.remove();
+  
+  restartScrolling()
+  lightbox?.remove();
+
+  main?.setAttribute("aria-hidden", "false")
+  main?.removeAttribute("class")
+  header?.setAttribute("aria-hidden", "false")
+  header?.removeAttribute("class")  
 }
+
 // utilisation du flèches de la lightbox
 export function nextLightbox(el) {
   const arrow = document.querySelector('#arrowRight');
@@ -19,7 +30,7 @@ export function nextLightbox(el) {
   });
 }
 
-export function previousLightbox(el, ) {
+export function previousLightbox(el) {
   const arrow = document.querySelector('#arrowLeft');
   arrow?.addEventListener('click', () => {
     launchLightbox(el);
@@ -40,7 +51,6 @@ export function arrowSettings(el) {
     previousLightbox(previousElement);
   }
 }
-
 
 // get information
 function getPreviousAndNextSibling(el) {

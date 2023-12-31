@@ -20,12 +20,12 @@ h1 {
 
 header a{
     height: 50px;
+    margin-left: 100px;
 }
 
 .logo {
     height: 50px;
-    margin-left: 100px;
-    transition: all 1s;
+                transition: all 1s;
     &:hover{
         transform: scale(1.1);
         transition: all 1s;

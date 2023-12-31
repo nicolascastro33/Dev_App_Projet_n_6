@@ -1,44 +1,50 @@
 import { getPhotographerName } from '../getData/getUrlData.ts';
 import { InterfaceMedias } from '../utils/interface.ts';
 
-
-function isVideoOrImage(firstName:string | undefined, image:string, video:string, title:string, id:string){
-  let path:string 
-  let content: string
-  if(video){
-    path = `/assets/medias/${firstName}/${video}`
+function isVideoOrImage(
+  firstName: string | undefined,
+  image: string,
+  video: string,
+  title: string,
+  id: string
+) {
+  let path: string;
+  let content: string;
+  if (video) {
+    path = `/assets/medias/${firstName}/${video}`;
     content = `
       <video role="video" class="mediaPicture" alt="${title}" id="media-${id}" name="${title}">
         <source src="${path}" type="video/mp4">
       </video>
     
-    `
-    return {path, content}
-    
-  }else{
-    path = `/assets/medias/${firstName}/${image}`
-    content = `<img role="img" class="mediaPicture" alt="${title}" src="${path}" id="media-${id}" name="${title}"/>`
-    return {path, content}
+    `;
+    return { path, content };
+  } else {
+    path = `/assets/medias/${firstName}/${image}`;
+    content = `<img role="img" class="mediaPicture" alt="${title}" src="${path}" id="media-${id}" name="${title}"/>`;
+    return { path, content };
   }
 }
 
-export function mediasTemplate(data:InterfaceMedias) {
+export function mediasTemplate(data: InterfaceMedias) {
   const { title, id, likes, image, video } = data;
   const fullName = getPhotographerName();
   const firstName = fullName?.split(' ')[0];
-  const {content} = isVideoOrImage(firstName, image, video, title, id);
+  const { content } = isVideoOrImage(firstName, image, video, title, id);
 
   function getMediaCardDOM() {
     const contentCardDom = `
-              <div class="mediaPictureWrapper">
+              <button class="mediaPictureWrapper" aria-hidden="" aria-label="Cliquez pour agrandir ${title} de ${firstName}">
                 ${content}
-              </div>
+              </button>
               
-              <div class="mediaPictureText">
+              <div class="mediaPictureText" tabindex="0" aria-label="Nombres de likes : ${likes}">
                 <h2 id="text-${id}">${title}</h2>
                 <div class="numberLikes">
                     <p>${likes}</p>
-                    <img role="button" aria-label="Appuyer pour aimer la photo" class="noLike" alt="noLike" src="/assets/icons/favorite.png"/>
+                    <button type="button" role="button" aria-label="Appuyer pour aimer la photo" class="noLike" alt="noLike">
+                    <img alt="" src="/assets/icons/favorite.png"/>
+                    </button>
                 </div>
               </div>   
         `;

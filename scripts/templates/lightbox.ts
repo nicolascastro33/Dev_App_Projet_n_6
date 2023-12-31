@@ -23,9 +23,15 @@ export function lightboxTemplate(path: string, title: string) {
       ${content}
       <h2>${title}</h2>
     </div>
-    <img role="button" class="iconsLightbox" src="assets/icons/closeRed.png" alt="croix pour fermer la lightbox" id="closeModalLightbox"/>
-    <img role="button" class="iconsLightbox" src="assets/icons/arrowLeft.png" alt="Passer à la photo précèdente" id="arrowLeft" />
-    <img role="button" class="iconsLightbox" src="assets/icons/arrowRight.png" alt="Passer à la photo suivante" id="arrowRight"/>
+    <button type="button" role="button" class="iconsLightbox" id="closeModalLightbox" aria-label="Fermer la lightbox">    
+      <img src="assets/icons/closeRed.png" alt="croix pour fermer la lightbox" />
+    </button>
+    <button type="button" role="button" class="iconsLightbox" id="arrowLeft" aria-label="Passer à la photo précèdente">  
+      <img src="assets/icons/arrowLeft.png" alt="Passer à la photo précèdente" />
+    </button>
+    <button type="button" role="button" class="iconsLightbox" id="arrowRight" aria-label="Passer à la photo suivante">  
+      <img src="assets/icons/arrowRight.png" alt="Passer à la photo suivante"/>
+    </button>  
   </div>
     `;
   const lightboxWrapper = document.createElement('article');
