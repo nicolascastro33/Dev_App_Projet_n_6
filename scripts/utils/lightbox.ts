@@ -1,5 +1,4 @@
 import { launchLightbox } from '../display/lightbox';
-import { restartScrolling } from './scroll';
 
 export function closeLightbox() {
   const buttonClose = document.querySelector('#closeModalLightbox');
@@ -13,7 +12,6 @@ export function deleteLightbox() {
   const header = document.querySelector("header")
   const lightbox = document.querySelector('.lightbox');
   
-  restartScrolling()
   lightbox?.remove();
 
   main?.setAttribute("aria-hidden", "false")

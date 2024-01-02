@@ -22,6 +22,7 @@ export function photographerTemplate(data:InterfacePhotographer) {
     const cardDom = document.createElement('a');
     cardDom.href = path;
     cardDom.innerHTML = contentCardDom;
+    cardDom.setAttribute("aria-label",`Cliquez pour voir le profil de ${name}, venant de ${city} en ${country}`)
     return cardDom;
   }
   return { name, picture, getUserCardDOM };

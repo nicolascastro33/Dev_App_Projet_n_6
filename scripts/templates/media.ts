@@ -38,10 +38,10 @@ export function mediasTemplate(data: InterfaceMedias) {
                 ${content}
               </button>
               
-              <div class="mediaPictureText" tabindex="0" aria-label="Nombres de likes : ${likes}">
-                <h2 id="text-${id}">${title}</h2>
+              <div class="mediaPictureText">
+                <h2 tabindex="0" id="text-${id}">${title}</h2>
                 <div class="numberLikes">
-                    <p>${likes}</p>
+                    <p role=contentinfo tabindex="0" aria-label="Nombres de likes : ${likes}">${likes}</p>
                     <button type="button" role="button" aria-label="Appuyer pour aimer la photo" class="noLike" alt="noLike">
                     <img alt="" src="/assets/icons/favorite.png"/>
                     </button>

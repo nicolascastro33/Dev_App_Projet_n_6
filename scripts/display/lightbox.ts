@@ -5,7 +5,6 @@ import {
   closeLightbox,
   arrowSettings,
 } from '../utils/lightbox.ts';
-import { stopScrolling } from '../utils/scroll.ts';
 // affichage de la lightbox
 
 export function lightbox() {
@@ -38,6 +37,5 @@ function displayLightbox(img, text) {
   main?.setAttribute("class", "hidden")
   main?.setAttribute("aria-hidden", "true")
 
-  stopScrolling()
   main?.after(lightboxWrapper);
 }

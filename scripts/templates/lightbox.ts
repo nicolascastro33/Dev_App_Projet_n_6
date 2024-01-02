@@ -4,12 +4,12 @@ function videoOrImageContent(path: string, title: string): string {
 
   if (isVideo) {
     videoOrImageContent = `
-      <video role="video" id="pictureLightbox" alt=${title}" controls>
+      <video role="video" id="pictureLightbox" aria-selected="true" tabindex="0" alt=${title}" controls>
         <source src="${path}" type="video/mp4">
       </video>`;
     return videoOrImageContent;
   } else {
-    videoOrImageContent = `<img role="img" id="pictureLightbox"  src="${path}" alt="${title}" />`;
+    videoOrImageContent = `<img role="img" id="pictureLightbox" aria-selected="true" tabindex="0" src="${path}" alt="${title}" />`;
     return videoOrImageContent;
   }
 }

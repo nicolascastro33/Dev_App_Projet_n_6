@@ -16,11 +16,11 @@ import { mediasTemplate } from '../templates/media.ts';
 import { submitForm, updateForm } from '../modal/form.ts';
 import { validateSubmitForm, validateUpdateForm } from '../modal/validate.ts';
 import { likesAndPriceWrapper } from '../templates/likes.ts';
-import { calculateNumberOfLikes } from '../assets/likes.ts';
-import { displayDataSortBy, setTogglesortByButton } from '../assets/sortBy.ts';
-import { eraseDisplayMedia } from '../utils/erase/eraseDisplay.ts';
+import { calculateNumberOfLikes } from '../utils/likes.ts';
+import { displayDataSortBy, setTogglesortByButton } from '../utils/sortBy.ts';
+import { eraseDisplayMedia } from '../utils/eraseDisplay.ts';
 import { lightbox } from '../display/lightbox.ts';
-import { changeLikes } from '../assets/likes.ts';
+import { changeLikes } from '../utils/likes.ts';
 
 //fonctions pour obtenir et afficher les infos du photographe
 const data = await getPhotographerPageData(getPhotographerId);

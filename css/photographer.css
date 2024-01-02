@@ -65,7 +65,6 @@ main {
 .modal_header h2 {
   font-size: 4rem;
   font-weight: normal;
-  text-align: center;
   margin: 0;
 }
 .modal h3 {
@@ -186,7 +185,6 @@ form input {
 
 .options .option {
   height: 40px;
-  cursor: pointer;
   background-color: #901c1c;
   list-style-type: none;
   &:hover {
@@ -198,6 +196,7 @@ form input {
   }
   & button {
     background-color: #901c1c;
+    cursor: pointer;
     border: 0px;
     color: white;
     width: 100%;
@@ -400,7 +399,6 @@ section {
 }
 
 .hidden{
-  /* display: none; */
   visibility:hidden;
 }   
 

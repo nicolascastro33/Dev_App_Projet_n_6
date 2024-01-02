@@ -1,4 +1,4 @@
-import { InterfaceMedias } from '../utils/interface';
+import { InterfaceMedias } from './interface';
 
 const optionMenu = document.querySelector('.select-menu'),
   selectBtn = optionMenu?.querySelector('.select-btn'),
@@ -9,15 +9,19 @@ const optionMenu = document.querySelector('.select-menu'),
 export function setTogglesortByButton() {
   selectBtn?.addEventListener('click', () => {
     optionMenu?.classList.toggle('active');
-    allOption?.setAttribute('aria-hidden', 'false');
-    selectBtn?.setAttribute('aria-expended', 'true');
     if (optionMenu?.getAttribute("class")?.includes("active")) {
       options?.forEach((option) => {
         option.setAttribute('tabindex', '0');
+        allOption?.setAttribute('aria-hidden', 'false');
+        selectBtn.setAttribute("aria-label", "bouton pour fermer les options")
+        selectBtn?.setAttribute('aria-expanded', 'true');
       });
     } else {
       options?.forEach((option) => {
         option.setAttribute('tabindex', '-1');
+        allOption?.setAttribute('aria-hidden', 'true');
+        selectBtn.setAttribute("aria-label", "bouton pour ouvrir les options")
+        selectBtn?.setAttribute('aria-expanded', 'false');
       });
     }
   });
@@ -49,7 +53,6 @@ function getDataSortBy(data) {
     newData = byPopularity(data);
   } else if (btn_text?.innerHTML === 'Date') {
     newData = byDate(data);
-    console.log(newData);
   } else if (btn_text?.innerHTML === 'Titre') {
     newData = byTitle(data);
   }
