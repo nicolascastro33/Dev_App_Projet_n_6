@@ -26,7 +26,7 @@ export async function displayPhotographerInfo(data:InterfacePhotographer) {
   return price
 }
 
-export async function displayPhotographerMedias(getMedias:Array<InterfaceMedias>, templates:Function) {;
+export async function displayPhotographerMedias(getMedias:Array<InterfaceMedias>, templates) {
   const sortBy = document.querySelector('.all-select-menu');
   const mediasSection = document.createElement('section');
   sortBy?.after(mediasSection);

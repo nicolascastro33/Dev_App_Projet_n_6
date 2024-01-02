@@ -1,6 +1,6 @@
 import { InterfacePhotographer } from "../utils/interface.ts";
 
-export async function displayData(photographers:Array<InterfacePhotographer>, photographerTemplate:Function) {
+export async function displayData(photographers:Array<InterfacePhotographer>, photographerTemplate) {
   const photographersSection = document.querySelector('.photographer_section');
   photographers?.map((photographer) => {
     const photographerModel = photographerTemplate(photographer);

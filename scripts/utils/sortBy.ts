@@ -29,12 +29,11 @@ export function setTogglesortByButton() {
 
 export function displayDataSortBy(
   data: Array<InterfaceMedias>,
-  displayData: Function,
-  mediasTemplate: Function,
-  eraseDisplayMedia: Function,
-  lightbox: Function,
-  changeLikes: Function
-) {
+  displayData,
+  mediasTemplate,
+  eraseDisplayMedia,
+  lightbox,
+  changeLikes) {
   options!.forEach((option) => {
     option.addEventListener('click', () => {
       setTextSelect(option);
@@ -60,7 +59,7 @@ function getDataSortBy(data) {
 }
 
 function byDate(data: Array<InterfaceMedias>): Array<InterfaceMedias> {
-  function dateComparison(a: any, b: any) {
+  function dateComparison(a:InterfaceMedias, b: InterfaceMedias) {
     const date1 = new Date(a.date);
     const date2 = new Date(b.date);
     return Number(date1) - Number(date2);
@@ -71,22 +70,22 @@ function byDate(data: Array<InterfaceMedias>): Array<InterfaceMedias> {
 }
 
 function byPopularity(data: Array<InterfaceMedias>): Array<InterfaceMedias> {
-  let newData = data.sort(function (a, b) {
+  const newData = data.sort(function (a, b) {
     return a.likes - b.likes;
   });
   return newData;
 }
 
 function byTitle(data: Array<InterfaceMedias>): Array<InterfaceMedias> {
-  let newData = data.sort(function (a, b) {
+  const newData = data.sort(function (a, b) {
     return a.title.localeCompare(b.title);
   });
   return newData;
 }
 
 function setTextSelect(option) {
-  let selectedOption = option.querySelector('.option-text')?.innerHTML;
-  let actualOption = btn_text?.innerHTML;
+  const selectedOption = option.querySelector('.option-text')?.innerHTML;
+  const actualOption = btn_text?.innerHTML;
 
   btn_text!.innerHTML = selectedOption;
   option.querySelector('.option-text').innerHTML = actualOption;

@@ -1,10 +1,10 @@
-export function initModal(closeModal:Function, displayModal:Function,name:Function) {
+export function initModal(closeModal, displayModal ,name) {
     const fullName = name()
-    const modalHeader = document.querySelector(".modal_header")
+    const textModalHeader = document.querySelector(".modal_header_text h2")
     const namePhotographer = document.createElement("h3")
     namePhotographer.textContent = `${fullName}`
 
-    modalHeader?.after(namePhotographer)
+    textModalHeader?.after(namePhotographer)
 
     const openButton = document.querySelector('#openModal');
     const closeButton = document.querySelector('#closeModal');

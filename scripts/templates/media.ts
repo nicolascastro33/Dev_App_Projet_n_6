@@ -13,7 +13,7 @@ function isVideoOrImage(
   if (video) {
     path = `/assets/medias/${firstName}/${video}`;
     content = `
-      <video role="video" class="mediaPicture" alt="${title}" id="media-${id}" name="${title}">
+      <video class="mediaPicture" alt="${title}" id="media-${id}" name="${title}">
         <source src="${path}" type="video/mp4">
       </video>
     
@@ -21,7 +21,7 @@ function isVideoOrImage(
     return { path, content };
   } else {
     path = `/assets/medias/${firstName}/${image}`;
-    content = `<img role="img" class="mediaPicture" alt="${title}" src="${path}" id="media-${id}" name="${title}"/>`;
+    content = `<img class="mediaPicture" alt="${title}" src="${path}" id="media-${id}" name="${title}"/>`;
     return { path, content };
   }
 }
@@ -41,9 +41,9 @@ export function mediasTemplate(data: InterfaceMedias) {
               <div class="mediaPictureText">
                 <h2 tabindex="0" id="text-${id}">${title}</h2>
                 <div class="numberLikes">
-                    <p role=contentinfo tabindex="0" aria-label="Nombres de likes : ${likes}">${likes}</p>
+                    <p tabindex="0">${likes}</p>
                     <button type="button" role="button" aria-label="Appuyer pour aimer la photo" class="noLike" alt="noLike">
-                    <img alt="" src="/assets/icons/favorite.png"/>
+                    <img alt="likes" src="/assets/icons/favorite.png"/>
                     </button>
                 </div>
               </div>   

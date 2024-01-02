@@ -22,7 +22,7 @@ export function changeLikes() {
 function changeValueAllMediaLikes(likeItOrNot: boolean) {
   const likesValue = document.querySelector('.likesWrapper p');
   if (likesValue !== null) {
-    let value: number = Number(likesValue.innerHTML);
+    const value: number = Number(likesValue.innerHTML);
     let newValue;
     if (likeItOrNot) {
       newValue = value + 1;
@@ -30,7 +30,6 @@ function changeValueAllMediaLikes(likeItOrNot: boolean) {
       newValue = value - 1;
     }
     likesValue.innerHTML = newValue.toString();
-    likesValue.setAttribute('aria-label', `${newValue} likes sur les photos`);
   }
 }
 
@@ -38,7 +37,7 @@ function changeValueAllMediaLikes(likeItOrNot: boolean) {
 function changeOneMediaLikes(likeButton: Element, likeItOrNot: boolean) {
   const numberOfLikesText =
     likeButton.closest('.numberLikes')?.firstElementChild;
-  let value: number = Number(numberOfLikesText?.innerHTML);
+  const value: number = Number(numberOfLikesText?.innerHTML);
 
   const nameButton = likeItOrNot ? 'like' : 'noLike';
   const oldNameButton = nameButton === 'like' ? 'noLike' : 'like';
@@ -51,7 +50,6 @@ function changeOneMediaLikes(likeButton: Element, likeItOrNot: boolean) {
     likeButton.setAttribute('alt', nameButton);
     likeButton.setAttribute('aria-label', newAriaAttribute);
 
-    numberOfLikesText?.setAttribute('aria-label', `Nombres de likes : ${newValue}`)
     numberOfLikesText.innerHTML = newValue.toString();
   }
 }

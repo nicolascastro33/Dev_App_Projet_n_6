@@ -15,9 +15,9 @@
       <a href="/" aria-label="Lien vers la page d'accueil" alt="Fisheye Home page" aria-current="page"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"/></a>
 
     </header>
-    <main id="main" aria-hidden="false">
+    <main >
       <div class="photograph-header">
-        <button type="button" aria-haspopup="true" class="contact_button" id="openModal">Contactez-moi</button>
+        <button type="button" class="contact_button" id="openModal">Contactez-moi</button>
       </div>
       <div class="all-select-menu">
       <label for="sort-by-select">Trier par</label>
@@ -44,16 +44,18 @@
     <div id="contact_modal">
       <div class="modal">
         <div class="modal_header">
-          <h2>Contactez-moi</h2>
+          <div role="complementary" class="modal_header_text">
+            <h2>Contactez-moi</h2>
+          </div>
           <button type="button" role="button" id="closeModal" aria-describedby="img">
-            <img    src="/assets/icons/close.svg"  alt="Fermer la modal" />
+            <img src="/assets/icons/close.svg"  alt="Fermer la modal" />
           </button>
           
         </div>
 
 
-        <form role="form" aria-hidden="true">
-          <div role="group" aria-label="Veuillez informez vos coordonnées, ainsi que votre message à la photographe">
+        <form aria-hidden="true">
+          <div role="complementary" aria-label="Veuillez informez vos coordonnées, ainsi que votre message à la photographe">
             <label for="prenom">Prénom</label>
             <input title="Votre prénom" type="text" id="prenom" name="Prénom" aria-required=true required />
             <label for="nom">Nom</label>

@@ -41,7 +41,7 @@ export function validateSubmitForm(
 function validateName(name: string, input: HTMLInputElement) {
   const regexName = new RegExp('^^[a-zA-Zéè-]{2,}$');
   if (!regexName.test(name)) {
-    let message = `Le champ ${input.name} est invalide`;
+    const message = `Le champ ${input.name} est invalide`;
     insertErrorMessage(message, input.name);
     insertErrorInput(input, input.name);
     throw new Error(message);
@@ -55,7 +55,7 @@ function validateName(name: string, input: HTMLInputElement) {
 function validateEmail(email: string, input: HTMLInputElement) {
   const regexEmail = new RegExp('[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+');
   if (!regexEmail.test(email)) {
-    let message = `Le champ d'email est invalide`;
+    const message = `Le champ d'email est invalide`;
     insertErrorMessage(message, input.name);
     insertErrorInput(input, input.name);
     throw new Error(message);
@@ -68,7 +68,7 @@ function validateEmail(email: string, input: HTMLInputElement) {
 
 function validateMessage(message, input) {
   if (!message || message.length < 15) {
-    let errorMessage = `Votre message est trop court`;
+    const errorMessage = `Votre message est trop court`;
     insertErrorMessage(errorMessage, input.name);
     insertErrorInput(input, input.name);
     throw new Error(errorMessage);

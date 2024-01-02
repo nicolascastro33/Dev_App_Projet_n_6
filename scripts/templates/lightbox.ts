@@ -4,12 +4,12 @@ function videoOrImageContent(path: string, title: string): string {
 
   if (isVideo) {
     videoOrImageContent = `
-      <video role="video" id="pictureLightbox" aria-selected="true" tabindex="0" alt=${title}" controls>
+      <video id="pictureLightbox" tabindex="0" alt=${title}" controls>
         <source src="${path}" type="video/mp4">
       </video>`;
     return videoOrImageContent;
   } else {
-    videoOrImageContent = `<img role="img" id="pictureLightbox" aria-selected="true" tabindex="0" src="${path}" alt="${title}" />`;
+    videoOrImageContent = `<img id="pictureLightbox" tabindex="0" src="${path}" alt="${title}" />`;
     return videoOrImageContent;
   }
 }
@@ -18,8 +18,8 @@ export function lightboxTemplate(path: string, title: string) {
   const content = videoOrImageContent(path, title);
 
   const lightboxContent = `
-  <div class="lightbox__content">
-    <div class="elementLightbox">
+  <div class="lightbox__content" >
+    <div class="elementLightbox" role="complementary">
       ${content}
       <h2>${title}</h2>
     </div>

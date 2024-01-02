@@ -9,15 +9,11 @@ export async function getPhotographers():Promise<InterfacePhotographer[]>{
         })
     );
     const photographers = response.photographers;
-    window.localStorage.setItem(
-      'photographersData',
-      JSON.stringify(photographers)
-    );
   //On retourne à la fin nos données, que cela viennent du local storage ou directement de l'api
   return photographers;
 }
 
-export async function getPhotographerPageData(getPhotographerId:Function) {
+export async function getPhotographerPageData(getPhotographerId) {
   const id = await getPhotographerId();
   const allPhotographers = await getPhotographers();
   const photographerData = allPhotographers?.find(
@@ -39,7 +35,7 @@ export async function getMediasData():Promise<InterfaceMedias[]> {
 export async function getPhotographerMedias():Promise<InterfaceMedias[]>{
   const medias = await getMediasData();
   const id = await getPhotographerId();
-  let photographerMedias:Array<InterfaceMedias> = [];
+  const photographerMedias:Array<InterfaceMedias> = [];
   for (let i = 0; i < medias.length; i++) {
     if (medias[i].photographerId === id) {
       photographerMedias.push(medias[i]);

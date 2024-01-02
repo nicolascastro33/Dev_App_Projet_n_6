@@ -2,6 +2,7 @@ main {
   margin: auto;
 }
 
+
 #contact_modal {
   display: none;
   position: fixed;
@@ -40,12 +41,12 @@ main {
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 35px;
-  margin: auto;
+  margin: 30px auto 30px auto;
 }
 
 .modal textarea {
@@ -56,19 +57,22 @@ main {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: flex-start;
 }
 
 .modal_header img {
   cursor: pointer;
+  position: relative;
+  top: 15px;
 }
 
 .modal_header h2 {
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: normal;
   margin: 0;
 }
 .modal h3 {
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: normal;
   margin: 0 0 20px 0;
 }
@@ -82,7 +86,8 @@ form {
 
 form label {
   color: #312e2e;
-  font-size: 2rem;
+  font-size: 
+  1.2rem;
 }
 
 form div {
@@ -95,7 +100,7 @@ form div {
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 50px;
   border: none;
   border-radius: 5px;
 }
@@ -106,8 +111,7 @@ form input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 313px;
-  padding: 0 35px 0 35px;
+  padding: 0 35px 0 35px;  
 }
 /* Form */
 
@@ -334,6 +338,10 @@ section {
 
 .goodInput {
   background-color: rgb(6, 185, 6);
+}
+
+.hiddenForm{
+  opacity: 0.6;
 }
 
 /* Lightbox */
