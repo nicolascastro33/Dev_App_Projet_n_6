@@ -5,7 +5,7 @@ import {
   closeLightbox,
   arrowSettings,
 } from '../utils/lightbox.ts';
-// affichage de la lightbox
+// affichage de la lightbox'
 
 export function lightbox() {
   const cardDom = document.querySelectorAll('.mediaCardWrapper');

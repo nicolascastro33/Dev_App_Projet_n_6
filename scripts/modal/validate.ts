@@ -18,7 +18,6 @@ export function validateUpdateForm(input: HTMLInputElement) {
   }
 }
 
-//Fonction qui va vérifier nos résultats quand on submit le form
 export function validateSubmitForm(
   input: HTMLInputElement,
   allInformation: InterfaceForm

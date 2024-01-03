@@ -1,26 +1,26 @@
-function videoOrImageContent(path: string, title: string): string {
-  const isVideo = path.includes('mp4');
-  let videoOrImageContent: string;
-
-  if (isVideo) {
-    videoOrImageContent = `
+class videoOrImageCard {
+  constructor(path: string, title: string | undefined) {
+    let videoOrImageContent: string;
+    if (path.includes('mp4')) {
+      videoOrImageContent = `
       <video id="pictureLightbox" tabindex="0" alt=${title}" controls>
         <source src="${path}" type="video/mp4">
       </video>`;
-    return videoOrImageContent;
-  } else {
-    videoOrImageContent = `<img id="pictureLightbox" tabindex="0" src="${path}" alt="${title}" />`;
-    return videoOrImageContent;
+    } else {
+      videoOrImageContent = `<img id="pictureLightbox" tabindex="0" src="${path}" alt="${title}" />`;
+
+    }
+    return {videoOrImageContent};
   }
 }
 
 export function lightboxTemplate(path: string, title: string) {
-  const content = videoOrImageContent(path, title);
+  const {videoOrImageContent}:string = new videoOrImageCard(path, title);
 
   const lightboxContent = `
   <div class="lightbox__content" >
     <div class="elementLightbox" role="complementary">
-      ${content}
+      ${videoOrImageContent}
       <h2>${title}</h2>
     </div>
     <button type="button" role="button" class="iconsLightbox" id="closeModalLightbox" aria-label="Fermer la lightbox">    

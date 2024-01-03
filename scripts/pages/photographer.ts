@@ -54,3 +54,5 @@ const { price } = data;
 likesAndPriceWrapper(numberLikes, price);
 //Modifications des likes
 changeLikes();
+
+
