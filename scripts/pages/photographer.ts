@@ -21,6 +21,8 @@ import { displayDataSortBy, setTogglesortByButton } from '../utils/sortBy.ts';
 import { eraseDisplayMedia } from '../utils/eraseDisplay.ts';
 import { lightbox } from '../display/lightbox.ts';
 import { changeLikes } from '../utils/likes.ts';
+import { keydownLightbox } from '../utils/lightbox.ts';
+import { keydownModal } from '../modal/init.ts'; 
 
 //fonctions pour obtenir et afficher les infos du photographe
 const data = await getPhotographerPageData(getPhotographerId);
@@ -31,9 +33,11 @@ const mediaData = await getPhotographerMedias();
 displayPhotographerMedias(mediaData, mediasTemplate);
 //fonctions pour la partie lightbox
 lightbox();
+keydownLightbox()
 
 //fonctions sur la modal de contact
 initModal(closeModal, displayModal, getPhotographerName);
+keydownModal(closeModal)
 submitForm(validateSubmitForm);
 updateForm(validateUpdateForm);
 

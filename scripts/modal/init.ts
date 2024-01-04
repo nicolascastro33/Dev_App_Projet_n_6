@@ -12,13 +12,11 @@ export function initModal(closeModal, displayModal ,name) {
 
     openButton?.addEventListener('click', () => displayModal());
     closeButton?.addEventListener('click', () => closeModal());
-    keydownModal(closeModal)
   }
 
-function keydownModal(closeModal){
-    const body = document.querySelector("body")
+export function keydownModal(closeModal){
     const form = document.querySelector("form")
-    body?.addEventListener("keydown", (e) => {
+    document?.addEventListener("keydown", (e) => {
       if(e.key === 'Escape' && form?.getAttribute("aria-hidden") === 'false'){
         closeModal()
       }

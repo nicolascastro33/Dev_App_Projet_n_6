@@ -1,17 +1,31 @@
 import { launchLightbox } from '../display/lightbox.ts';
 
-const body = document.querySelector('body');
+export function keydownLightbox(){
+  document.addEventListener('keydown', (e) =>{
+    if(document.querySelector(".lightbox") === null){
+      return
+    }
+    if(e.key === 'Escape'){
+      deleteLightbox()
+    }else if(e.key === 'ArrowRight'){
+      const idImage = `${document.querySelector('#arrowRight')?.getAttribute("name")?.slice(6)}`;
+      const img = document.querySelector(`#media-${idImage}`)
+      const text = document.querySelector(`#text-${idImage}`)
+      console.log(text)
+      launchLightbox(img, text)
+    }else if(e.key === 'ArrowLeft'){
+      const idImage = `${document.querySelector('#arrowLeft')?.getAttribute("name")?.slice(6)}`;
+      const img = document.querySelector(`#media-${idImage}`)
+      const text = document.querySelector(`#text-${idImage}`)
+      launchLightbox(img, text)
+    }
+  })
+}
 
 export function closeLightbox() {
-  const lightbox = document.querySelector('.lightbox');
   const buttonClose = document.querySelector('#closeModalLightbox');
   buttonClose?.addEventListener('click', () => {
     deleteLightbox();
-  });
-  body?.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox !== undefined) {
-      deleteLightbox();
-    }
   });
 }
 
@@ -30,31 +44,27 @@ export function deleteLightbox() {
 
 // utilisation du flèches de la lightbox
 export function nextLightbox(el) {
+  const {img, text} = getImgAndText(el)
+  const newArrowId = img?.id.slice(6)
   const arrow = document.querySelector('#arrowRight');
+  arrow?.setAttribute("name", `arrow-${newArrowId}`) 
   arrow?.addEventListener('click', () => {
-    launchLightbox(el);
-  });
-  body?.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') {
-      launchLightbox(el);
-    }
+    launchLightbox(img, text);
   });
 }
 
 export function previousLightbox(el) {
+  const {img, text} = getImgAndText(el)
+  const newArrowId = img?.id.slice(6)
   const arrow = document.querySelector('#arrowLeft');
+  arrow?.setAttribute("name", `arrow-${newArrowId}`) 
   arrow?.addEventListener('click', () => {
-    launchLightbox(el);
-  });
-  body?.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      launchLightbox(el);
-    }
+    launchLightbox(img, text);
   });
 }
 
-export function arrowSettings(el) {
-  const { nextElement, previousElement } = getPreviousAndNextSibling(el);
+export function arrowSettings(img) {
+  const { nextElement, previousElement } = getPreviousAndNextSibling(img);
   const { firstChild, lastChild } = getFirstAndLastElement();
   if (!nextElement) {
     nextLightbox(firstChild);
@@ -69,9 +79,10 @@ export function arrowSettings(el) {
 }
 
 // get information
-function getPreviousAndNextSibling(el) {
-  const nextElement = el.nextElementSibling;
-  const previousElement = el.previousElementSibling;
+function getPreviousAndNextSibling(img) {
+  const parentElement = img.closest(".mediaCardWrapper")
+  const nextElement = parentElement.nextElementSibling;
+  const previousElement = parentElement.previousElementSibling;
   return { nextElement, previousElement };
 }
 

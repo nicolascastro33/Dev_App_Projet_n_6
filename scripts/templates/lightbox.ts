@@ -1,4 +1,4 @@
-class MediaHtmlElementFactory {
+export class MediaHtmlElementFactory {
   constructor(path: string, title: string | undefined) {
     let element: HTMLElement;
     if (path.includes('mp4')) {

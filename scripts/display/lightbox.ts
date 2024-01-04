@@ -1,4 +1,6 @@
-import { lightboxTemplate } from '../templates/lightbox';
+import {
+  lightboxTemplate,
+} from '../templates/lightbox.ts';
 import {
   getImgAndText,
   deleteLightbox,
@@ -12,30 +14,30 @@ export function lightbox() {
   for (let i = 0; i < cardDom.length; i++) {
     const cardPictureDom = cardDom[i].firstElementChild;
     cardPictureDom!.addEventListener('click', () => {
-      launchLightbox(cardDom[i]);
+      const { img, text } = getImgAndText(cardDom[i]);
+      launchLightbox(img, text);
     });
   }
 }
 
-export function launchLightbox(el) {
-  const { img, text } = getImgAndText(el);
+export function launchLightbox(img, text) {
   deleteLightbox();
   displayLightbox(img, text);
   closeLightbox();
-  arrowSettings(el);
+  arrowSettings(img);
 }
 
 function displayLightbox(img, text) {
   const path = img.src ? img.src : img.firstElementChild.src;
   const lightboxWrapper = lightboxTemplate(path, text.textContent);
   const main = document.querySelector('main');
-  const header = document.querySelector("header")
+  const header = document.querySelector('header');
 
-  header?.setAttribute("class", "hidden")
-  header?.setAttribute("aria-hidden", "true")
+  header?.setAttribute('class', 'hidden');
+  header?.setAttribute('aria-hidden', 'true');
 
-  main?.setAttribute("class", "hidden")
-  main?.setAttribute("aria-hidden", "true")
+  main?.setAttribute('class', 'hidden');
+  main?.setAttribute('aria-hidden', 'true');
 
   main?.after(lightboxWrapper);
 }

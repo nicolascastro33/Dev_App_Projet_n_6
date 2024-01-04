@@ -28,7 +28,6 @@ export function closeModal() {
 
         main!.inert = false
         header!.inert = false
-
         form?.setAttribute("aria-hidden","true")         
        }
     clearForm();
