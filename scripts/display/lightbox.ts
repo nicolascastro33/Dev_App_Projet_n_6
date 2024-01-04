@@ -26,7 +26,7 @@ export function launchLightbox(el) {
 }
 
 function displayLightbox(img, text) {
-  const path = !img.src ? img.firstElementChild.src : img.src;
+  const path = img.src ? img.src : img.firstElementChild.src;
   const lightboxWrapper = lightboxTemplate(path, text.textContent);
   const main = document.querySelector('main');
   const header = document.querySelector("header")

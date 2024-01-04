@@ -1,23 +1,31 @@
-import { launchLightbox } from '../display/lightbox';
+import { launchLightbox } from '../display/lightbox.ts';
+
+const body = document.querySelector('body');
 
 export function closeLightbox() {
+  const lightbox = document.querySelector('.lightbox');
   const buttonClose = document.querySelector('#closeModalLightbox');
   buttonClose?.addEventListener('click', () => {
     deleteLightbox();
+  });
+  body?.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox !== undefined) {
+      deleteLightbox();
+    }
   });
 }
 
 export function deleteLightbox() {
   const main = document.querySelector('main');
-  const header = document.querySelector("header")
+  const header = document.querySelector('header');
   const lightbox = document.querySelector('.lightbox');
-  
+
   lightbox?.remove();
 
-  main?.setAttribute("aria-hidden", "false")
-  main?.removeAttribute("class")
-  header?.setAttribute("aria-hidden", "false")
-  header?.removeAttribute("class")  
+  main?.setAttribute('aria-hidden', 'false');
+  main?.removeAttribute('class');
+  header?.setAttribute('aria-hidden', 'false');
+  header?.removeAttribute('class');
 }
 
 // utilisation du flèches de la lightbox
@@ -26,12 +34,22 @@ export function nextLightbox(el) {
   arrow?.addEventListener('click', () => {
     launchLightbox(el);
   });
+  body?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      launchLightbox(el);
+    }
+  });
 }
 
 export function previousLightbox(el) {
   const arrow = document.querySelector('#arrowLeft');
   arrow?.addEventListener('click', () => {
     launchLightbox(el);
+  });
+  body?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      launchLightbox(el);
+    }
   });
 }
 

@@ -47,6 +47,8 @@ displayDataSortBy(
   lightbox,
   changeLikes
 );
+
+
 //Likes
 //fonctions sur l'affichage et le calcul du nombre de likes
 const numberLikes = calculateNumberOfLikes(mediaData);

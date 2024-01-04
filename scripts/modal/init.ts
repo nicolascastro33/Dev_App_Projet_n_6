@@ -8,11 +8,19 @@ export function initModal(closeModal, displayModal ,name) {
 
     //Fonction de fermeture et ouverture modal
     const openButton = document.querySelector('#openModal');
-    const closeButton = document.querySelector('#closeModal');
+    const closeButton = document.querySelector('#closeModal');''
 
     openButton?.addEventListener('click', () => displayModal());
     closeButton?.addEventListener('click', () => closeModal());
+    keydownModal(closeModal)
   }
 
-export function modalForm(){
+function keydownModal(closeModal){
+    const body = document.querySelector("body")
+    const form = document.querySelector("form")
+    body?.addEventListener("keydown", (e) => {
+      if(e.key === 'Escape' && form?.getAttribute("aria-hidden") === 'false'){
+        closeModal()
+      }
+    })
 }

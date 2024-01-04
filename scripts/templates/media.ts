@@ -5,13 +5,12 @@ export function mediasTemplate(data: InterfaceMedias) {
   const { title, id, likes, video } = data;
   const fullName = getPhotographerName();
   const firstName = fullName?.split(' ')[0];
-  const imageOrVideo = video ? "video" : "image"
-  const {content} = new videoOrImageCard(data, firstName, imageOrVideo );
+  const imageOrVideo = video ? 'video' : 'image';
+
 
   function getMediaCardDOM() {
     const contentCardDom = `
               <button type="button" class="mediaPictureWrapper" aria-label="Cliquez pour agrandir ${title} de ${firstName}">
-                ${content}
               </button>
               
               <div class="mediaPictureText">
@@ -29,30 +28,55 @@ export function mediasTemplate(data: InterfaceMedias) {
     cardDom.className = 'mediaCardWrapper';
     cardDom.id = id;
     cardDom.innerHTML = contentCardDom;
+
+    const content = new MediaHtmlElementFactory(
+      data,
+      firstName,
+      imageOrVideo
+    ) as HTMLElement;
+
+    cardDom.querySelector(".mediaPictureWrapper")?.prepend(content)
+
     return cardDom;
   }
   return { getMediaCardDOM };
 }
 
-
-class videoOrImageCard{
-  constructor(data: InterfaceMedias, firstName:string | undefined, type:string){
+class MediaHtmlElementFactory {
+  constructor(
+    data: InterfaceMedias,
+    firstName: string | undefined,
+    type: string
+  ) {
     let path: string;
-    let content: string;
-    const {image, video, title, id} = data
-    
-    if(type === "video"){
+    let content: HTMLElement;
+    const { image, video, title, id } = data;
+
+    if (type === 'video') {
       path = `/assets/medias/${firstName}/${video}`;
-      content = `
-        <video class="mediaPicture" alt="${title}" id="media-${id}" name="${title}">
-          <source src="${path}" type="video/mp4">
-        </video>
-      
-      `;
-    }else{
+      const source = document.createElement('source');
+      source.src = path;
+      source.type = 'video/mp4';
+
+      content = document.createElement('video');
+      content.id = `media-${id}`;
+      content.setAttribute('tabindex', '0');
+      content.setAttribute('alt', title ?? '');
+      content.setAttribute('name', `${title}`)
+      content.className = "mediaPicture"
+      content.appendChild(source);
+
+    } else {
       path = `/assets/medias/${firstName}/${image}`;
-      content = `<img class="mediaPicture" alt="${title}" src="${path}" id="media-${id}" name="${title}"/>`;
+      const img = document.createElement('img');
+      img.id = `media-${id}`;
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('alt', title ?? '');
+      img.setAttribute('name', `${title}`)
+      img.className = "mediaPicture"
+      img.src = path;
+      content = img;
     }
-    return {content}
+    return  content ;
   }
 }

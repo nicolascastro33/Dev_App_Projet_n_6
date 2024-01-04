@@ -1,21 +1,24 @@
 import { eraseErrorMessage } from '../utils/error/eraseError.ts';
-import { showSuccessMessage, eraseSuccessMessage } from '../utils/success/messageForm.ts';
+import {
+  showSuccessMessage,
+  eraseSuccessMessage,
+} from '../utils/success/messageForm.ts';
 
-export const allInputForm = document.querySelectorAll('form input');
+export const allInputForm =
+  document.querySelectorAll<HTMLInputElement>('form input');
 const form = document.querySelector('form');
-
 
 export function clearForm() {
   // On efface toutes les données des inputs, leurs class css, ainsi que leurs message d'erreur
   for (let i = 0; i < allInputForm.length; i++) {
-    const input:HTMLInputElement = allInputForm[i];
-    if(input.type !== "submit"){
+    const input = allInputForm[i];
+    if (input.type !== 'submit') {
       input.value = '';
     }
     input.classList.remove('goodInput', 'errorInput');
-    const message = showSuccessMessage()
-    if(message){
-      eraseSuccessMessage(message)
+    const message = showSuccessMessage();
+    if (message) {
+      eraseSuccessMessage(message);
     }
     eraseErrorMessage(input.name);
   }
@@ -46,7 +49,7 @@ export function submitForm(validateSubmitForm) {
       }
       console.log(allInformation);
       clearForm();
-      showSuccessMessage();      
+      showSuccessMessage();
     });
   } catch (error) {
     console.log('Une erreur est survenue: ' + error.message);
